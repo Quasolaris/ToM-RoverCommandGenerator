@@ -1,0 +1,24 @@
+ROVER:
+CMD ARG1 ARG2 Notes
+Delay execution WAIT NUM H/M/S Hours/Minutes/Seconds
+Forward FW NUM M/Y Meters/Yards
+Backward BK NUM " "
+Left turn LT NUM DEG/SEC Degrees/Seconds of arc
+Right turn RT NUM " "
+Use a tool USE TOOL Instruments/Lighting systems
+
+MAST:
+Yaw set YWST DEG/RAD
+Yaw left YWLT "
+Yaw right YWRT "
+Pitch set PTST "
+Pitch up PTUP "
+Pitch down PTDN "
+
+Take on Mars Keys (toggle):
+C Rotate through available cameras
+V Rotate through views
+L Light on/off (depending on what's available)
+H HUD
+G Show or hide display panels
+F Toggle overall view

@@ -1,0 +1,16 @@
+Collection of my research on relative bearings with vectors
+
+
+https://www.problemsphysics.com/vectors/bearings_angles_vectors.html
+
+Calculation seem sto be straight forward:
+
+a := Deg. of V1
+b := Deg. of V2
+c := Relative Bearing in DEG
+
+c = b - a
+
+Is c greater than 180 then it has to make a right turn (RT), where the DEG will be (360 - c)
+
+Will test this as soon the first script stands.
