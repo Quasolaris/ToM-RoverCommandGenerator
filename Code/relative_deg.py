@@ -2,33 +2,23 @@
 import math
 import matplotlib.pyplot as plt
 
-def makePoint(deg, dist, points, commands):
+def makePoint(deg, dist, x1, y1, commands):
 
-	# angles
-	alpha = deg # handles also negative DEG if point is on the Left of rover
+	angle = 90 - deg
 
-	# alpha plus beta needs to be 90 -> regular triangle
-	if (deg < 0):
-		cmd = "LT"
+	if(deg > 90):
+		angle = 360 - (deg - 90)
+
+
+	if(math.cos(angle) < 0 or deg > 90):
+		(x2, y2) = (x1 + dist*math.cos(angle)*-1, y1 + dist*math.sin(angle)*-1)
 	else:
-		cmd = "RT" 
+		(x2, y2) = (x1 + dist*math.cos(angle), y1 + dist*math.sin(angle))
 
-	# create point with relative grid from start point
-	# startpoint and direction of rover determens grid
-	# for point we use simple trigo.
-	# for new point:
-	if(math.sin(alpha) < 0 or cmd == "LT"):
-		x = math.sin(alpha) * dist * -1
-	else:
-		x = math.sin(alpha) * dist
+	if(deg < 0 or deg > 90):
+		(x2, y2) = (x2 * -1, y2 * -1)
 
-	y = math.sqrt(dist*dist + x*x)
-	point = (x, y)
-
-	points.append(point)
-	commands.append(cmd)
-
-	return points, commands
+	return (x2, y2)
 
 
 # Main Script -------------------
@@ -36,17 +26,9 @@ def makePoint(deg, dist, points, commands):
 points = [(0, 0)]
 commands = [" "]
 
-points, commands = makePoint(34, 2, points, commands)
-points, commands = makePoint(3, 24, points, commands)
-points, commands = makePoint(90, 45, points, commands)
-points, commands = makePoint(-13, 12, points, commands)
 
-
-
-
-print(points)
-print(commands)
-
+points.append(makePoint(140, 15, 0, 0, commands))
 plt.plot(*zip(*points), color='red', marker='o')
 plt.grid()
 plt.show()
+
